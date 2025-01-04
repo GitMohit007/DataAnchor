@@ -11,11 +11,6 @@ license = { text = "MIT" }
 authors = [
     { name = "GitMohit007", email = "your_email@example.com" }
 ]
-maintainers = [
-    { name = "GitMohit007", email = "your_email@example.com" }
-]
-homepage = "https://github.com/GitMohit007/data-anchor"
-repository = "https://github.com/GitMohit007/data-anchor"
 keywords = ["shared-memory", "ipc", "dataclasses", "python"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -30,7 +25,4 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: System :: Distributed Computing",
 ]
-
-[project.dependencies]
-# Add any dependencies your library requires
-pytest = "^7.0" # Example for testing
+requires-python = ">=3.8"
