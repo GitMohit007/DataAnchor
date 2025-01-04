@@ -8,7 +8,7 @@ setup(
     long_description_content_type="text/markdown",
     author="GitMohit007",
     author_email="your_email@example.com",
-    url="https://github.com/GitMohit007/data-anchor",
+    url="https://github.com/GitMohit007/DataAnchor",
     packages=find_packages(),
     python_requires=">=3.8",
     classifiers=[

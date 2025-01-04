@@ -8,6 +8,9 @@ version = "1.0.0"
 description = "A Python library for shared memory synchronization with dataclasses."
 readme = "README.md"
 license = { text = "MIT" }
+homepage = "https://github.com/GitMohit007/DataAnchor"
+repository = "https://github.com/GitMohit007/DataAnchor"
+
 authors = [
     { name = "GitMohit007", email = "your_email@example.com" }
 ]
