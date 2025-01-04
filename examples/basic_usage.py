@@ -4,7 +4,7 @@ import time
 from data_anchor import DataAnchor
 
 @dataclass
-class TestDC(SharedMemoryBase):
+class TestDC(DataAnchor):
     temperature: float = 0.0
     unit: str = "C"
     timestamp: float = 0.0
@@ -17,7 +17,6 @@ class TestDC(SharedMemoryBase):
     
     def from_bytes_dict(self, data: bytes):
         return json.loads(data.decode("utf-8"))
-
 
 if __name__ == "__main__":
     # Create an instance of the dataclass

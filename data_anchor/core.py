@@ -1,10 +1,9 @@
+import time
+import struct
+from abc import abstractmethod
 from dataclasses import dataclass, field, asdict
 from multiprocessing import Semaphore
 from multiprocessing.shared_memory import SharedMemory
-from abc import abstractmethod
-import json
-import struct
-import time
 
 
 class DataAnchor:
