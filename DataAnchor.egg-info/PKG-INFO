@@ -1,23 +1,9 @@
 Metadata-Version: 2.1
-Name: data-anchor
-Version: 1.0.0
-Summary: A Python library for shared memory synchronization with dataclasses.
-Home-page: https://github.com/GitMohit007/data-anchor
-Author: GitMohit007
-Author-email: GitMohit007 <your_email@example.com>
-License: MIT
-Keywords: shared-memory,ipc,dataclasses,python
-Classifier: Development Status :: 5 - Production/Stable
-Classifier: Programming Language :: Python
-Classifier: Programming Language :: Python :: 3
-Classifier: Programming Language :: Python :: 3.8
-Classifier: Programming Language :: Python :: 3.9
-Classifier: Programming Language :: Python :: 3.10
-Classifier: Programming Language :: Python :: 3.11
-Classifier: License :: OSI Approved :: MIT License
-Classifier: Operating System :: OS Independent
-Classifier: Topic :: Software Development :: Libraries :: Python Modules
-Classifier: Topic :: System :: Distributed Computing
+Name: DataAnchor
+Version: 0.1
+Home-page: https://github.com/GitMohit007/DataAnchor
+Author: Mohit Krishna Kanojia
+Author-email: mohitkrishna010@gmail.com
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
@@ -28,7 +14,7 @@ License-File: LICENSE
 
 It provides a thread-safe and process-safe mechanism to share data between processes and threads, making it ideal for lightweight **Inter-Process Communication (IPC)** scenarios. It's built to be simple to use: just inherit the `DataAnchor` class into your dataclass, and its attributes will automatically be shared across processes.
 
-You can also customize how your data is serialized and deserialized—just ensure the deserialization results in a dictionary matching the class's attributes.
+You can also customize how your data is serialized and deserializedâ€”just ensure the deserialization results in a dictionary matching the class's attributes.
 
 This library was born out of a personal need to solve the critical problem of sharing data between processes and threads in a way that minimizes complexity and avoids common headaches. I hope it can help you too!
 

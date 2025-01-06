@@ -1,35 +1,17 @@
 from setuptools import setup, find_packages
+import os
 
+# Read the contents of your README file
+with open(os.path.join(os.path.dirname(__file__), 'README.md')) as f:
+    readme = f.read()
 setup(
-    name="data-anchor",
-    version="1.0.0",
-    description="A Python library for shared memory synchronization with dataclasses.",
-    long_description=open("README.md").read(),
-    long_description_content_type="text/markdown",
-    author="GitMohit007",
-    author_email="your_email@example.com",
+    name="DataAnchor",
+    version="0.1",
+    author="Mohit Krishna Kanojia",
+    author_email="mohitkrishna010@gmail.com",
     url="https://github.com/GitMohit007/DataAnchor",
     packages=find_packages(),
-    python_requires=">=3.8",
-    classifiers=[
-        "Development Status :: 5 - Production/Stable",
-        "Programming Language :: Python",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.11",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        "Topic :: System :: Distributed Computing",
-    ],
-    license="MIT",
-    keywords="shared-memory ipc dataclasses python",
-    install_requires=[],
-    extras_require={
-        "dev": ["pytest", "black", "mypy"],  # Optional: development tools
-    },
-    include_package_data=True,
-    zip_safe=False,
+    python_requires='>=3.8',
+    long_description=readme,
+    long_description_content_type='text/markdown',
 )
