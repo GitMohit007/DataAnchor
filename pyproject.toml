@@ -1,6 +1,6 @@
 [project]
 name = "data_anchor"
-version = "0.1.0"
+version = "0.0.10"
 description = "A way to create shared dataclasses in python for multiprocessing and multi threading real time applications"
 authors = [
     {name = "GitMohit007 mohitkrishna010@gmail.com"}
