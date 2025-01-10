@@ -44,6 +44,11 @@ jobs:
     needs: details
     runs-on: ubuntu-latest
     steps:
+      - name: Install jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+          
       - name: Fetch Info from PyPI
         run: |
           response=$(curl -s https://pypi.org/pypi/DataAnchor/json || echo "{}")
