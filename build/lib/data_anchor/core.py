@@ -3,7 +3,11 @@ import struct
 from abc import abstractmethod
 from dataclasses import dataclass, field, asdict
 from multiprocessing import Semaphore
+from multiprocessing import Event as multiprocessingEvent
 from multiprocessing.shared_memory import SharedMemory
+from threading import Thread
+from threading import Event as ThreadingEvent
+import atexit
 
 
 class DataAnchor:
@@ -12,7 +16,7 @@ class DataAnchor:
     _instances = {}
     _write_semaphore = Semaphore(1)
     _read_semaphore = Semaphore()
-    
+    atexit.register(lambda: [instance.close_shared_memory() for instance in DataAnchor._instances.values()])
     def __new__(cls,*args, **kwargs) :
         if cls not in cls._instances:
             instance = super().__new__(cls)
@@ -170,7 +174,6 @@ class DataAnchor:
             # Release the write semaphore
             self._write_semaphore.release()
             return True
-
             
     def close_shared_memory(self, exception: Exception | None = None):
         """Close and unlink shared memory."""
@@ -187,3 +190,47 @@ class DataAnchor:
                 self.shm = None
         if exception:
             raise exception
+    
+    def __del__(self):
+        self.close_shared_memory()
+        self._initialized = False
+
+class LiveDataAnchor(DataAnchor):
+    def __init__(self):
+        super().__init__()
+        self._time_out = 0.1
+        self._stop_event = ThreadingEvent()
+        self._update_event = ThreadingEvent()
+        self._update_thread = Thread(target=self._watch_for_updates, daemon=True)
+        self._update_thread.start()
+    
+    def _watch_for_updates(self):
+        """Background thread to watch for updates."""
+        while not self._stop_event.is_set():
+            if self._update_event.wait(self._time_out):
+                self._update_event.clear()
+                try:
+                    self.pull()
+                except Exception as e:
+                    raise e
+
+    def sync(self, blocking: bool = True, ensure_latest: bool = True):
+        """Synchronize the shared memory with the latest data."""
+        if super().push(blocking, ensure_latest):
+            self._update_event.set()
+            return True
+        return False
+    
+    def stop(self):
+        """Stop the background thread."""
+        self._stop_event.set()
+        if self._update_thread.is_alive():
+            self._update_thread.join()
+    
+    def __del__(self):
+        try:
+            self.stop()
+        except Exception as e:
+            pass
+        finally:
+            super().__del__()
