@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field, asdict
 import json
 import time
-from data_anchor import DataAnchor
+from data_anchor_py import DataAnchor
 
 @dataclass
 class TestDC(DataAnchor):
