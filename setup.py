@@ -5,7 +5,7 @@ import os
 with open(os.path.join(os.path.dirname(__file__), 'README.md')) as f:
     readme = f.read()
 setup(
-    name="DataAnchor",
+    name="data_anchor_py",
     version="0.0.5",
     author="Mohit Krishna Kanojia",
     author_email="mohitkrishna010@gmail.com",
